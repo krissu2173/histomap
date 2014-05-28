@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		 <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+		<link rel="stylesheet" type="text/css" href="css/bootstrap.css" >
+		<link rel="stylesheet" type="text/css" href="css/main.css" >
+		
+
+	
+
+	</head>
+	<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?sensor=false"></script>
+	
+	
+	<body>
+
+		<nav class="navbar navbar-default " role="navigation">
+			<div class="container-fluid">
+				<!-- Brand and toggle get grouped for better mobile display -->
+				<div class="navbar-header">
+					<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+						<span class="sr-only">Toggle navigation</span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					</button>
+					<a id="mainPage" class="navbar-brand" href="#">HistoMap</a>
+				</div>
+
+				<!-- Collect the nav links, forms, and other content for toggling -->
+				<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+					<ul class="nav navbar-nav">
+					</ul>
+				</div><!-- /.navbar-collapse -->
+			</div><!-- /.container-fluid -->
+		</nav>
+		
+	<div class="row">
+	<div  id = "contentBox" class="col-md-7 ">
+	<div class="myHeader">
+	
+ <h2 id="locationNameHeader"> </h2>
+  <hr>
+  <h2 id="locationImportanceHeader"> </h2>
+  </div>
+	<div class="tableContainer container">
+		
+		<!-- Nav tabs -->
+		<ul class="nav nav-tabs">
+			<li id='mainTab' class="active"><a href="#pictures" data-toggle="tab">Pictures</a></li>
+			<li><a href="#files" data-toggle="tab">Files</a></li>
+			<li><a href="#descriptions" data-toggle="tab">Descriptions</a></li>
+			<li><a href="#links" data-toggle="tab">Links</a></li>
+		</ul>
+
+		<!-- Tab panes -->
+		<div class="tab-content">
+			<div class="tab-pane active" id="pictures">
+			
+			<table id="picturesTable" class="table-striped table tablesorter">
+			<thead>
+				<tr>
+					<th class="header">Title</th>
+					<th class="header">Year</th>
+					<th class="header">Date added</th>
+					<th class="header">Photo</th>
+					<th class="header"></th>
+				</tr>
+			</thead>
+			<tbody>
+			</tbody>
+		</table>
+			
+			
+			</div>
+			<div class="tab-pane" id="files">
+			
+			<table id="filesTable" class="table table-striped tablesorter">
+			<thead>
+				<tr>
+					<th class="header">Title</th>
+					<th class="header">Year</th>
+					<th class="header">Date added</th>
+					<th class="header">File</th>
+					<th class="header"></th>
+				</tr>
+			</thead>
+			<tbody>
+			</tbody>
+		</table>
+			
+			
+			
+			</div>
+			<div class="tab-pane" id="descriptions">
+			
+			<table id="descriptionsTable" class="table table-striped tablesorter">
+			<thead>
+				<tr>
+					<th class="header">Title</th>
+					<th class="header">Year</th>
+					<th class="header">Date added</th>
+					<th class="header">Description</th>
+					<th class="header"></th>
+				</tr>
+			</thead>
+			<tbody>
+			</tbody>
+		</table>
+			
+			
+			
+			</div>
+			<div class="tab-pane" id="links">
+			<table id="linksTable" class="table table-striped tablesorter">
+			<thead>
+				<tr>
+					<th class="header">Date added</th>
+					<th class="header">Link</th>
+					<th class="header"></th>
+				</tr>
+			</thead>
+			<tbody>
+			</tbody>
+		</table>
+			
+			</div>
+		</div>
+	</div>
+	
+	
+	
+	</div>
+	
+	
+	
+	<div id = "sidebar" class="col-md-3 sidebar">
+	<button id="newMarker" type="button" class="btn btn-primary">Add new location</button>
+	<br>
+	<br>
+	<hr class="mainDivider">	
+	<div id="markerInfoContainer" class="elementHidden container">
+		<label class="elementHidden markerId">id</label>
+		<h3 id="markerTitle">Title</h3>
+		<label class="elementHidden" id="markerImportanceId"></label>
+		<h4><small id="markerImportance">Very important</small></h4>
+		<br>		
+		<button id="attachmentsViewBtn" type="button" class=" btn btn-info">View more</button>
+		<hr>
+		<h3 id="markerTitle">Add...</h3>
+		<button type="button" class=" btn-xs btn btn-success" data-toggle="modal" data-target="#pictureAddModal">Picture +</button>
+		<button type="button" class="btn-xs btn btn-success" data-toggle="modal" data-target="#fileAddModal">File +</button>
+		<button type="button" class="btn-xs btn btn-success" data-toggle="modal" data-target="#descriptionAddModal">Description +</button>
+		<button type="button" class="btn-xs btn btn-success" data-toggle="modal" data-target="#addLinkModal">Link +</button>
+		<hr>		
+		<button id="changeButton" class="btn btn-primary">Change</button>
+		<button class="btn btn-primary" data-toggle="modal" data-target="#deleteModal">Delete</button>
+		
+	</div>
+	
+	
+	<div id="markerChangeContainer" class="elementHidden container">
+		<form id="markerChangeForm" role="form">
+		<div id="changeTitleDiv" class="form-group">
+			<label>Name</label><label id="changeTitle-error" class="error-label"></label>
+
+			<input class="form-control" id="markerTitleChange" placeholder="Change title">
+			
+		</div>
+		<div class="form-group  has-feedback">
+				<label>Importance</label>
+					<select id="markerImportanceChange"class="form-control"></select>
+		</div>
+		<button type="button" id="saveChange" class="btn btn-primary">Save changes</button>
+		<button type="button" id="cancelChange" class="btn btn-primary">Cancel</button>
+</form>
+		
+	</div>
+	</div>
+	
+	<!-- Picture modal -->
+	<div class="modal fade" id="picModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+		<div class="modal-dialog modal-lg">
+			<div class="modal-content">
+				<div id="picModal-body" class="modal-body">
+				
+				</div>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+			</div>
+		</div>
+	</div>
+	<!-- Picture modal end -->
+	
+	
+  <div id = "map-canvas" class="bigMap col-md-9 " ></div>
+  
+</div>
+
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="newLocationModal modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title" id="myModalLabel">Add new location</h4>
+      </div>
+      <div class="modal-body">
+		<!--	<form  id="newMarkerForm" role="form"> -->
+				<div id="nameDiv" class="form-group  has-feedback">
+				<label>Name *</label><label id="name-error" class="error-label"></label>
+				<input type="text" class="form-control" id="locationName" placeholder="Enter name">
+				</div>		
+				<div id="importanceDiv" class="form-group  has-feedback">
+				<label>Importance *</label>
+					<select id="importanceSelect"class="form-control"></select>
+				</div>
+      </div>
+      <div class="modal-footer">
+        <button id="closeModal" type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" id="saveMarkerButton"class="btn btn-primary">Save</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="pictureAddModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close2 close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title" id="myModalLabel">Add picture</h4>
+      </div>
+      <div class="modal-body">
+       <form id="pictureForm" action="http://dijkstra.cs.ttu.ee/~t112991/cgi-bin/mAPPsy/fileUpload.py?" method="post">
+				
+				<div id="pictureNameDiv" class="form-group has-feedback">
+				<label class="control-label">Picture name *</label><label id="pictureName-error" class="error-label"></label>
+				<input type="text" class="form-control" id="pictureName" placeholder="Picture name">
+				</div>
+				<div id="pictureYearDiv" class="form-group has-feedback">
+				<label class="control-label">Picture year</label><label id="pictureYear-error" class="error-label"></label>
+				<input type="text" class="form-control" id="pictureDate" placeholder="Year">
+				</div>
+				<br>
+				<div id="pictureFileDiv" class="form-group has-feedback">
+				<label id="pictureFile-error" class="error-label"></label>
+				<input type="file" name="file" id="pictureInput">
+				<p class="help-block">Upload picture (JPG, JPEG, PNG files only)</p>
+				<p><input id="pictureFormSubmit" class="elementHidden" type="submit" value="Upload"></p>
+				</div>
+		</form>
+     
+      <div class="modal-footer">
+        <button id="addPictureButton" type="button" class="btn btn-primary">Upload</button>
+		 <button type="button" class="close2 btn btn-primary" data-dismiss="modal">Cancel</button>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+
+
+<div class="modal fade" id="fileAddModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close2 close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title" id="myModalLabel">Add file</h4>
+      </div>
+      <div class="modal-body">
+       <form id="fileForm" action="http://dijkstra.cs.ttu.ee/~t112991/cgi-bin/mAPPsy/fileUpload.py?" method="post">
+				
+				<div id="fileNameDiv" class="form-group has-feedback">
+				<label class="control-label">File name *</label><label id="fileName-error" class="error-label"></label>
+				<input type="text" class="form-control" id="fileName" placeholder="File name">
+				</div>
+				<div id="fileYearDiv" class="form-group has-feedback">
+				<label class="control-label">File year</label><label id="fileYear-error" class="error-label"></label>
+				<input type="text" class="form-control" id="fileDate" placeholder="Year">
+				</div>
+				<br>
+				<div id="fileFileDiv" class="form-group has-feedback">
+				<label id="fileFile-error" class="error-label"></label>
+				<input type="file" name="file" id="fileInput">
+				<p class="help-block">Upload file (DOC, DOCX, PDF, TXT files only)</p>
+				<p><input id="fileFormSubmit" class="elementHidden" type="submit" value="Upload"></p>
+				</div>
+		</form>
+     
+      <div class="modal-footer">
+        <button id="addFileButton" type="button" class="btn btn-primary">Upload</button>
+		 <button type="button" class="close2 btn btn-primary" data-dismiss="modal">Cancel</button>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+
+<div class="modal fade" id="descriptionAddModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close2 close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title" id="myModalLabel">Add description</h4>
+      </div>
+      <div class="modal-body">
+				
+				<div id="descriptionNameDiv" class="form-group has-feedback">
+				<label class="control-label">Description name *</label><label id="descriptionName-error" class="error-label"></label>
+				<input type="text" class="form-control" id="descriptionName" placeholder="Description name">
+				</div>
+				<div id="descriptionYearDiv" class="form-group has-feedback">
+				<label class="control-label">Description year</label><label id="descriptionYear-error" class="error-label"></label>
+				<input type="text" class="form-control" id="descriptionDate" placeholder="Year">
+				</div>
+				<div id="descriptionDiv" class="form-group has-feedback">
+				<label class="control-label">Description *</label><label id="description-error" class="error-label"></label>
+				<textarea id="descriptionContent" class="form-control" rows="5"></textarea>
+				</div>
+		
+     
+      <div class="modal-footer">
+        <button id="addDescriptionButton" type="button" class="btn btn-primary">Save</button>
+		 <button type="button" class="close2 btn btn-primary" data-dismiss="modal">Cancel</button>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+
+<div class="modal fade" id="addLinkModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close2 close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title" id="myModalLabel">Add link</h4>
+      </div>
+      <div class="modal-body">
+			<div id="linkDiv" class="form-group has-feedback">
+				<label class="control-label">Enter URL *</label><label id="link-error" class="error-label"></label>
+				<input type="text" class="form-control" id="linkInput" placeholder="www.example.com">
+				</div>
+      </div>
+      <div class="modal-footer">
+        <button id="addLinkButton" type="button" class="btn btn-primary">Save</button>
+		 <button type="button" class="close2 btn btn-primary" data-dismiss="modal">Cancel</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title" id="myModalLabel">Delete location</h4>
+      </div>
+      <div class="modal-body">
+        Are you sure you want to delete location ?
+      </div>
+      <div class="modal-footer">
+        <button id="deleteMarker" type="button" class="btn btn-primary">Yes</button>
+		 <button type="button" class="btn btn-primary" data-dismiss="modal">Cancel</button>
+      </div>
+    </div>
+  </div>
+</div>
+				
+		
+	
+			
+
+		<script type="text/javascript" src="js/jQuery.js"></script>
+		<script type="text/javascript" src="./js/jquery-cookie/jquery.cookie.js"></script>
+		<script type="text/javascript" src="js/jquery.form.js"></script>
+		<script type="text/javascript" src="js/bootstrap.js"></script>
+		<script type="text/javascript" src="js/main.js"></script>
+		<script type="text/javascript" src="js/sidebar.js"></script>
+		<script type="text/javascript" src="js/attachmentsView.js"></script>
+		
+	</body>
+	
+</html>

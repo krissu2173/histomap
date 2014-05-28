@@ -1,0 +1,187 @@
+html { 
+height: 100%;
+}
+
+#changeTitle-error{
+margin-right:15px;
+}
+
+.description{
+max-width:300px;
+}
+
+.tableContainer{
+padding:20px;
+margin-left:20px;
+width:765px;
+background-color:#f8fbfc;
+}
+
+.newLocationModal{
+width:800px;
+right: 20%;
+}
+
+.myHeader{
+padding-left:20px;
+}
+#back{
+float:right;
+}
+
+table {
+	background-color: #dde4e6;
+}
+
+thead {
+	background-color: #2c3e50;
+	color: white;
+}
+
+tbody tr {
+	border-top: 1px solid #2c3e50;
+}
+
+.tableContainer> ul > li > a{
+background-color:#f8fbfc !important;
+}
+
+.tab-pane{
+padding:20px;
+}
+
+
+
+button{
+border-radius:0 !important ;
+}
+
+
+.elementVisible{
+display:block;
+}
+
+.elementHidden{
+display:none;
+}
+
+
+h3 > small{
+margin-left:30px;
+}
+
+.bigImg{
+	max-width:700px;
+	max-height:500px;
+	border-color:white;
+	border-style:solid;
+	border-width: medium;
+}
+
+.locationThumbnail {
+	max-width:100px;
+	max-height:100px;
+	border-color:white;
+	border-style:solid;
+	border-width: medium;
+	cursor:pointer;
+}
+
+#picModal {
+	background-color: black;
+}
+
+#picModal-body {
+	background-color: black;
+	text-align: center;
+}
+
+#picModal .modal-footer {
+	text-align: center;
+	border-top-color: transparent;
+}
+
+span{
+border-color:white;
+
+}
+
+body {
+background: #ecf0f1;
+height: 100%;
+margin: 0; 
+padding: 0;
+}
+
+.mainDivider {
+border: 0; border-top: 1px solid #ccc;
+margin-left:10px;}
+
+hr{
+border: 0; border-top: 1px solid #ccc;
+}
+.imgContainer{
+margin-left:0px;
+}
+
+.smallMap{
+height:500px;
+width:40%;
+}
+
+.bigMap{
+width:73%;
+height:500px;
+}
+#sidebar{
+ background: #ecf0f1;
+ 
+}
+#markerInfoContainer{
+width:330px;
+}
+#markerChangeContainer{
+width:330px;
+}
+#contentBox{
+background: #ecf0f1;
+display:none;
+}
+
+#chronView {
+cursor: pointer;
+}
+
+#mapView {
+cursor: pointer;
+}
+
+#newMarker{
+width:150px;
+position: absolute;
+right: 10px;
+}
+.hiddenDiv{
+display:none;
+}
+.error-label{
+color:#e74c3c;
+position:absolute;
+right:0px;		
+}
+
+
+.popover.left > .arrow:after {
+	border-left-color: #F61C24;
+}
+
+.popover.right > .arrow:after {
+	border-right-color: #F61C24;
+}
+
+
+.navbar {
+background-color:#2c3e50;
+border-radius: 0;
+}
+
